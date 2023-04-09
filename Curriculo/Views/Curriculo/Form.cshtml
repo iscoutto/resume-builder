@@ -1,0 +1,610 @@
+﻿@model CurriculoViewModel
+@{
+    ViewData["Title"] = "Form";
+}
+
+<form action="Salvar" method="post">
+    <h1 class="h1" style="text-align:center;">Formulário de Currículo</h1>
+
+    <!-- Inicio Seção Pessoal>-->
+
+    <h2>Informações Pessoais</h2>
+
+    <center>
+        <button id="expandir-recolher-pessoal" onclick="pessoalExpandirRecolher()" class="btn btn-outline-primary">Preencher Informações Pessoais</button>
+        <br />
+        <span class="badge text-info">Cliquei no botão acima para Expandir o Formulário</span>
+    </center>
+
+    <div id="pessoal-expandir-recolher">
+
+        <div class="form-group">
+            <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+            <label for="Cpf">CPF</label>
+            @if (ViewBag.Operacao == "I")
+            {
+                <input type="number" Name="Cpf" value="@Model.Cpf" />
+            }
+            else
+            {
+                <input type="number" Name="Cpf" value="@Model.Cpf" disabled" readonly />
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Nome completo*</label>
+            <input type="text" id="nome" name="nome" required value="@Model.Nome">
+        </div>
+
+        <div class="form-group">
+            <label for="Data_nascimento" class="control-label">Data de Nascimento</label>
+            @if (ViewBag.Operacao == "I")
+            {
+                <input type="date" Name="Data_nascimento" value="@DateTime.Now class="form-control" />
+            }
+            else
+            {
+                <input type="date" Name="Data_nascimento" value="@Model.Data_nascimento.ToString("yyyy-MM-dd")" class="form-control" />
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="endereco">Endereço*</label>
+            <input type="text" id="endereco" name="endereco" value="@Model.Endereco" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail*</label>
+            <input type="email" id="email" name="email" value="@Model.Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone*</label>
+            <input type="tel" id="telefone" name="telefone" value="@Model.Telefone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="linkedin">LinkedIn</label>
+            <input type="text" id="linkedin" name="linkedin" value="@Model.Linkedin">
+        </div>
+
+        <center>
+            <button id="expandir-recolher-acadPro1" onclick="acadProExpandirRecolher1(),pessoalExpandirRecolher()" class="buttonSS">Manter Salvo / Adicionar Formação</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima manter formulário o salvo e seção minimizada.</span>
+            <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica.</span>
+        </center>
+
+    </div>
+
+    <!-- Fim da Seção Pessoal>-->
+
+    <br />
+
+    <!-- Inicio da Seção Acadêmica>-->
+
+    <h2>Seção Acadêmica</h2>
+
+    <center>
+        <button id="expandir-recolher-acadPro1" onclick="acadProExpandirRecolher1()" class="buttonAA">Expandir / Recolher Formação</button>
+        <br />
+        <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica.</span>
+    </center>
+
+    <div id="acadPro-expandir-recolher1">
+
+        <!-- Formação 1>-->
+
+        <br />
+        <div class="form-group">
+            <h2>Formação acadêmica 1</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" id="curso" name="curso1" value="@Model.Curso1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Instituição</label>
+                <input type="text" id="instituicao" name="instituicao1" value="@Model.Instituicao1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Conclusão</label>
+                <input type="text" id="conclusao" name="conclusao1" value="@Model.Conclusao1" required>
+            </div>
+
+        </div>
+        <br />
+
+
+
+        <center>
+            <button id="expandir-recolher-acadPro2" onclick="acadProExpandirRecolher2(),acadProExpandirRecolher1()" class="btn btn-outline-primary"> Adicionar Formação</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher1()" class="buttonSS">Concluir Formação</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+
+    <!-- Formação 2>-->
+
+    <div id="acadPro-expandir-recolher2">
+
+        <center>
+            <button id="expandir-recolher-acadPro1" onclick="acadProExpandirRecolher1(),acadProExpandirRecolher2()" class="buttonAA">Expandir / Recolher Formação 1</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Formação acadêmica 2</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" id="curso" name="curso2" value="@Model.Curso2">
+            </div>
+
+            <div class="form-group">
+                <label>Instituição</label>
+                <input type="text" id="instituicao" name="instituicao2" value="@Model.Instituicao2">
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Conclusão</label>
+                <input type="text" id="conclusao" name="conclusao2" value="@Model.Conclusao2">
+            </div>
+
+        </div>
+        <br />
+
+        <center>
+            <button id="expandir-recolher-acadPro3" onclick="acadProExpandirRecolher3(),acadProExpandirRecolher2()" class="btn btn-outline-primary"> Adicionar Formação</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher2()" class="buttonSS">Concluir Formação</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+    <!-- Formação 3>-->
+
+    <div id="acadPro-expandir-recolher3">
+
+        <center>
+            <button id="expandir-recolher-acadPro2" onclick="acadProExpandirRecolher2(),acadProExpandirRecolher3()" class="buttonAA">Expandir / Recolher Formação 2</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Formação acadêmica 3</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" id="curso" name="curso3" value="@Model.Curso3">
+            </div>
+
+            <div class="form-group">
+                <label>Instituição</label>
+                <input type="text" id="instituicao" name="instituicao3" value="@Model.Instituicao3">
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Conclusão</label>
+                <input type="text" id="conclusao" name="conclusao3" value="@Model.Conclusao3">
+            </div>
+
+        </div>
+        <br />
+
+        <center>
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher4(),acadProExpandirRecolher3()" class="btn btn-outline-primary"> Adicionar Formação</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher3()" class="buttonSS">Concluir Formação</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+    <!-- Formação 4>-->
+
+    <div id="acadPro-expandir-recolher4">
+
+        <center>
+            <button id="expandir-recolher-acadPro3" onclick="acadProExpandirRecolher3(),acadProExpandirRecolher4()" class="buttonAA">Expandir / Recolher Formação 3</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Formação acadêmica 4</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" id="curso" name="curso4" value="@Model.Curso4">
+            </div>
+
+            <div class="form-group">
+                <label>Instituição</label>
+                <input type="text" id="instituicao" name="instituicao4" value="@Model.Instituicao4">
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Conclusão</label>
+                <input type="text" id="conclusao" name="conclusao4" value="@Model.Conclusao4">
+            </div>
+
+        </div>
+        <br />
+
+        <center>
+            <button id="expandir-recolher-acadPro5" onclick="acadProExpandirRecolher5(),acadProExpandirRecolher4()" class="btn btn-outline-primary"> Adicionar Formação</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher4()" class="buttonSS">Concluir Formação</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+    <!-- Formação 5 >-->
+
+    <div id="acadPro-expandir-recolher5">
+
+        <center>
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher4(),acadProExpandirRecolher5()" class="buttonAA">Expandir / Recolher Formação 4</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Formação acadêmica 5</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" id="curso" name="curso5" value="@Model.Curso5">
+            </div>
+
+            <div class="form-group">
+                <label>Instituição</label>
+                <input type="text" id="instituicao" name="instituicao5" value="@Model.Instituicao5">
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Conclusão</label>
+                <input type="text" id="conclusao" name="conclusao5" value="@Model.Conclusao5">
+            </div>
+
+        </div>
+
+        <center>
+            <button id="expandir-recolher-acadPro4" onclick="acadProExpandirRecolher5(),proExpandirRecolher1()" class="buttonSS">Concluir Formação</button>
+            <br />
+            <span class="badge text-info">Manter salvo, limite de 5 Formações Acadêmicas.</span>
+        </center>
+
+    </div>
+    <br />
+
+    <!-- Fim da Formação Acadêmica >-->
+
+    <!-- Começo Experiencia Profissional>-->
+
+    <h2>Seção Profissional</h2>
+
+    <center>
+        <button id="expandir-recolher-Pro1" onclick="proExpandirRecolher1()" class="buttonAA">Expandir / Recolher Experiência</button>
+        <br />
+        <span class="badge text-info">Irá Expandir a Seção de Formação Acadêmica.</span>
+    </center>
+
+    <div id="pro-expandir-recolher1">
+
+        <!-- Experiência Profissional 1>-->
+
+        <br />
+        <div class="form-group">
+            <h2>Experiência Profissional 1</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" name="empresa1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Cargo</label>
+                <input type="text" name="cargo1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tempo de Experiência - em ANOS</label>
+                <input type="number" name="tempo_exp1" placeholder="Digite quantos anos ficou neste empresa" required>
+            </div>
+
+        </div>
+        <br />
+
+
+
+        <center>
+            <button id="expandir-recolher-pro2" onclick="proExpandirRecolher2(),proExpandirRecolher1()" class="btn btn-outline-primary"> Adicionar Experiência</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-pro4" onclick="proExpandirRecolher1()" class="buttonSS">Concluir Experiência</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+
+    <!-- Experiência Profissional 2>-->
+
+    <div id="pro-expandir-recolher2">
+
+        <center>
+            <button id="expandir-recolher-pro1" onclick="proExpandirRecolher1(),proExpandirRecolher2()" class="buttonAA">Expandir / Recolher Experiência 1</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Experiência Profissional Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Experiência Profissional 2</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" name="empresa2">
+            </div>
+
+            <div class="form-group">
+                <label>Cargo</label>
+                <input type="text" name="cargo2">
+            </div>
+
+            <div class="form-group">
+                <label>Tempo de Experiência - em ANOS</label>
+                <input type="number" name="tempo_exp2" placeholder="Digite quantos anos ficou neste empresa">
+            </div>
+
+        </div>
+        <br />
+
+        <center>
+            <button id="expandir-recolher-pro3" onclick="proExpandirRecolher3(),proExpandirRecolher2()" class="btn btn-outline-primary"> Adicionar Experiência</button>
+            <br />
+            <span class="badge text-info">Cliquei no botão acima</span>
+
+            <br />
+            <button id="expandir-recolher-pro4" onclick="proExpandirRecolher2()" class="buttonSS">Concluir Experiência</button>
+            <br />
+            <span class="badge text-info">Manter salvo, continuar formulário.</span>
+        </center>
+
+    </div>
+
+    <!-- Experiencia Profissional 3 >-->
+
+    <div id="pro-expandir-recolher3">
+
+        <center>
+            <button id="expandir-recolher-pro4" onclick="proExpandirRecolher2(),proExpandirRecolher3()" class="buttonAA">Expandir / Recolher Experiência 2</button>
+            <br />
+            <span class="badge text-info">Irá Expandir a Seção de Experiência Profissional Anterior.</span>
+        </center>
+
+        <br />
+        <div class="form-group">
+            <h2>Experiência Profissional 3</h2>
+        </div>
+
+        <div class="formacao">
+
+            <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" name="empresa3">
+            </div>
+
+            <div class="form-group">
+                <label>Cargo</label>
+                <input type="text" name="cargo3">
+            </div>
+
+            <div class="form-group">
+                <label>Tempo de Experiência - em ANOS</label>
+                <input type="number" name="tempo_exp3" placeholder="Digite quantos anos ficou neste empresa">
+            </div>
+
+        </div>
+
+        <center>
+            <button id="expandir-recolher-pro4" onclick="proExpandirRecolher3(),conhecimentoProExpandirRecolher()" class="buttonSS">Concluir Experiência</button>
+            <br />
+            <span class="badge text-info">Manter salvo, limite de 3 Experiências Profissionais.</span>
+        </center>
+
+    </div>
+    <br />
+
+    <center>
+        <button id="expandir-recolher-conhecimento" onclick="conhecimentoProExpandirRecolher()" class="buttonAA"> Expandir / Recolher Conhecimento</button>
+        <br />
+        <span class="badge text-info">Cliquei no botão acima</span>
+    </center>
+
+    <div id="conhecimento-expandir-recolher">
+
+        <div class="form-group">
+            <label for="idiomas">Idiomas*</label>
+
+            <input type="text" name="idioma" placeholder="Digite o Idioma que você possui conhecimento......" /><br />
+            <br />
+
+            <div class="form-group">
+                <label><input type="radio" name="habilidade" value="Básico">Básico</label>
+                <label><input type="radio" name="habilidade" value="Intermediário">Intermediário</label>
+                <label><input type="radio" name="habilidade" value="Avançado">Avançado</label>
+            </div>
+
+            <div class="form-group">
+                <button type="button" onclick="salvarSelecionados()">Salvar Idioma</button>
+                <button type="button" onclick="limparIdiomaSelecionado()">Limpar Idiomas</button>
+            </div>
+
+            <div class="form-group">
+                <label>Idiomas:</label>
+                <textarea id="idiomas" name="idiomas" rows="4" cols="5" style="resize:none;">@Model.Idiomas</textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="pret_salarial">Pretensão Salarial*</label>
+        <input type="number" id="pret_salarial" name="pret_salarial" value="@Model.Pret_salarial" required>
+    </div>
+
+    <div class="form-group">
+        <label for="cargo_pretendido">Cargo Pretendido*</label>
+        <input type="text" id="cargo_pretendido" name="cargo_pretendido" value="@Model.Cargo_pretendido" required>
+    </div>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<script>
+    // seleciona o elemento do textarea
+    const textarea = document.querySelector('#idiomas');
+
+    // define o atributo readonly
+    textarea.setAttribute('readonly', true);
+
+
+    function salvarSelecionados() {
+        var radioSelecionado = document.querySelector('input[name="habilidade"]:checked').value;
+        var textoIdioma = document.querySelector('input[name="idioma"]').value;
+        var campoTexto = document.getElementById('idiomas');
+
+        campoTexto.value += textoIdioma + ' ';
+        campoTexto.value += 'Conhecimento: ' + radioSelecionado + ';\n';
+
+    }
+    function limparIdiomaSelecionado() {
+        var campoTexto = document.getElementById('idiomas');
+        campoTexto.value = '';
+    }
+
+    //Expandir Recolher Informações Pessoais
+    function pessoalExpandirRecolher() {
+
+        var div = document.getElementById("pessoal-expandir-recolher");
+
+        div.classList.toggle("expandida");
+    };
+    //Expandir Recolher Experiência Profissional
+    function proExpandirRecolher1() {
+
+        var divPro = document.getElementById("pro-expandir-recolher1");
+
+        divPro.classList.toggle("expandida");
+    };
+    function proExpandirRecolher2() {
+
+        var divProO = document.getElementById("pro-expandir-recolher2");
+
+        divProO.classList.toggle("expandida");
+    };
+    function proExpandirRecolher3() {
+
+        var divProT = document.getElementById("pro-expandir-recolher3");
+
+        divProT.classList.toggle("expandida");
+    };
+
+    //Expandir Recolher Informações Acadêmicas
+    function acadProExpandirRecolher1() {
+
+        var divacadPro = document.getElementById("acadPro-expandir-recolher1");
+
+        divacadPro.classList.toggle("expandida");
+    };
+    function acadProExpandirRecolher2() {
+
+        var divacadProT = document.getElementById("acadPro-expandir-recolher2");
+
+        divacadProT.classList.toggle("expandida");
+    };
+    function acadProExpandirRecolher3() {
+
+        var divacadProA = document.getElementById("acadPro-expandir-recolher3");
+
+        divacadProA.classList.toggle("expandida");
+    };
+    function acadProExpandirRecolher4() {
+
+        var divacadProS = document.getElementById("acadPro-expandir-recolher4");
+
+        divacadProS.classList.toggle("expandida");
+    };
+    function acadProExpandirRecolher5() {
+
+        var divacadProE = document.getElementById("acadPro-expandir-recolher5");
+
+        divacadProE.classList.toggle("expandida");
+    };
+
+    //Expandir Recolher Informações Conhecimentos
+    function conhecimentoProExpandirRecolher() {
+
+        var divconhecimento = document.getElementById("conhecimento-expandir-recolher");
+
+        divconhecimento.classList.toggle("expandida");
+    };
+</script>

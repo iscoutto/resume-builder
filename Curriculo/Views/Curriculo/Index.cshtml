@@ -1,0 +1,178 @@
+﻿@model List<CurriculoViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="descricao" content="" />
+    <meta name="autores" content="" />
+    <title>Desenvolvimento de currículos</title>
+    <!-- Bootstrap icones-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Fontes do Google-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <!-- Navegacao-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Criador de currículos</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#Sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Como-usar">Como usar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Recentes">Seus currículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/curriculo/Create">Novo currículo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Desenvolvedores">Sobre nós</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-50">
+            <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">O melhor site para o desenvolvimento de currículos</h1>
+                    <hr class="divider" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">De forma simples e acessível seu currículo pronto em minutos!</p>
+                    <a class="btn btn-primary btn-xl" href="#Sobre">Saiba mais</a>
+                </div>
+            </div>
+        </div>
+</header>
+    <!-- Sobre -->
+    <section class="page-section bg-dark" id="Sobre">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Nós temos o que você precisa!</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">
+                O Criador de Currículos tem tudo o que você precisa!
+                <br>
+                Não gaste mais tempo tentando formatar para um modelo profissional,
+                <br>
+                nós fazemos isso pra você!
+            </p>
+            <a class="btn btn-light btn-xl" href="#Como-usar">Vamos começar!</a>
+        </div>
+        
+    </section>
+    <!-- Servicos-->
+    <section class="page-section" id="Como-usar">
+        <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">O que você precisa para utilizar nosso serviço?</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Sobre você</h3>
+                            <p class="text-muted mb-0">Tenha em mãos seus dados para compor seu currículo!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Dados atualizados</h3>
+                            <p class="text-muted mb-0">Lembre-se de utilizar seus dados atualizados.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Rápido de acessar</h3>
+                            <p class="text-muted mb-0">O currículo mais rápido que você já fez.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Você consegue!</h3>
+                            <p class="text-muted mb-0">Esse é o primeiro passo de uma grande jornada!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+        <!-- Listar currículos-->
+        <section class="page-section bg-dark" id="Recentes">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="text-white font-weight-bold">Aqui você encontra seus currículos recentes:</h2>
+                <table class="text-white table table-striped">
+                    <tr>
+                        <th class="text-white">Eventos</th>
+                        <th class="text-white">Nome</th>
+                        <th class="text-white">CPF</th>
+                    </tr>
+                    @foreach (CurriculoViewModel curriculo in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="/curriculo/Edit?cpf=@curriculo.Cpf" class="btn btn-warning btn-xl">Editar</a>
+                                <a href="javascript:apagarCurriculo(@curriculo.Cpf)" class="btn btn-danger btn-xl">Excluir</a>
+                                <a href="/curriculo/CurriculoFormatado?cpf=@curriculo.Cpf" class="btn btn-success btn-xl">Formatar</a>
+                            </td>
+                            <td style="color: white;">@curriculo.Nome</td>
+                            <td style="color: white;">@curriculo.Cpf</td>
+                        </tr>
+                    }
+                </table>
+                <script>function apagarCurriculo(cpf) {
+                        if (confirm('Confirma a exclusão do registro?'))
+                            location.href = 'curriculo/Delete?cpf=' + cpf;
+                    }</script>
+                <a class="btn btn-light btn-xl" style="float: right" href="/curriculo/Create">Novo currículo</a>
+            </div>
+        </section>
+        <!-- Desenvolvedores -->
+        <section class="page-section" id="Desenvolvedores">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="mt-0">Sobre os Devs:</h2>
+                        <hr class="divider" />
+                        <p class="text-muted mb-5">
+                            Engenheiros em formação pela Faculdade Engenheiro Salvador Arena,
+                            <br>
+                            projeto realizado pela orientação do Professor Eduardo Rosalém.
+                        </p>
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <img class="rounded-circle" src="../img/haron.jpeg" alt="Imagem" style="width:200%">
+                            </div>
+                            <div class="col-md-10">
+                                <p class="card-text">Haron Terentin de Misquita - 081210032</p>
+                            </div>
+
+                            <div class="col-md-10">
+                                <p class="card-text">Isabella Soares Couto - 081210006</p>
+                            </div>
+                            <div class="col-md-2">
+                                <img class="rounded-circle" src="../img/isabella.jpeg" alt="Imagem" style="width:200%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Rodapé-->
+        <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Fundação Salvador Arena - EC5</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+</body>
+</html>

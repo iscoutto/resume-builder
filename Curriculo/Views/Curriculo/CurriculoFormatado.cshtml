@@ -1,0 +1,170 @@
+﻿@model CurriculoViewModel
+@{
+    ViewData["Title"] = "Curriculo Formatado";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Nome</title>
+    <meta charset="utf-8">
+    <!-- FontAwesome JS-->
+    <script defer src="../js/all.min.js"></script>
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../css/formatado.css">
+</head>
+
+<!-- Lateral -->
+<body>
+    <div class="wrapper mt-lg-5">
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+                <h1 class="name">@Model.Nome</h1>
+            </div>
+
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <li class="birthday"><i class="fa-solid fa-cake-candles"></i><a>@Model.Data_nascimento</a></li>
+                    <li class="email"><i class="fa-solid fa-envelope"></i><a href="mailto: yourname@email.com">@Model.Email</a></li>
+                    <li class="linkedin"><i class="fa-brands fa-linkedin-in"></i><a href="#" target="_blank">linkedin.com/in/@Model.Linkedin</a></li>
+                    <li class="website"><i class="fa-solid fa-house"></i><a>@Model.Endereco</a></li>
+                </ul>
+                <button class="btn btn-light btn-imprimir btn-xl" onclick="window.print()">Imprimir</button>
+                <script>window.onbeforeprint = function () {
+                        document.querySelector('.no-print').setAttribute('hidden', true);
+                    }
+                    window.onafterprint = function () {
+                        document.querySelector('.no-print').removeAttribute('hidden');
+                    }</script>
+            </div>
+
+        </div>
+        <!-- Centro -->
+
+        <!-- Experiência profissional -->
+
+        <div class="main-wrapper">
+            @if (!string.IsNullOrEmpty(@Model.Empresa1))
+            {
+                <section>
+                    <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Experiência profissional</h2>
+                    <div>
+                        <p><strong>Empresa:</strong> @Model.Empresa1</p>
+                        <p><strong>Cargo:</strong> @Model.Cargo1</p>
+                        <p><strong>Tempo de experiência:</strong> @Model.Tempo_exp1</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Empresa2))
+            {
+                <section>
+                    <div>
+                        <p><strong>Empresa:</strong> @Model.Empresa2</p>
+                        <p><strong>Cargo:</strong> @Model.Cargo2</p>
+                        <p><strong>Tempo de experiência:</strong> @Model.Tempo_exp2</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Empresa3))
+            {
+                <section>
+                    <div>
+                        <p><strong>Empresa:</strong> @Model.Empresa3</p>
+                        <p><strong>Cargo:</strong> @Model.Cargo3</p>
+                        <p><strong>Tempo de experiência:</strong> @Model.Tempo_exp3</p>
+                    </div>
+                </section>
+            }
+
+            <!-- Pretensao de cargo e salario -->
+
+            <section>
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-pen-to-square"></i></span>Interesses</h2>
+                <div>
+                    <p><strong>Pretensão de cargo:</strong> @Model.Cargo_pretendido</p>
+                    <p><strong>Pretensão de salário:</strong> @Model.Pret_salarial</p>
+                </div>
+            </section>
+
+            <!-- Cursos -->
+
+            @if (!string.IsNullOrEmpty(@Model.Curso1))
+            {
+                <section>
+                    <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-archive"></i></span>Cursos</h2>
+                    <div>
+                        <p><strong>Curso:</strong> @Model.Curso1</p>
+                        <p><strong>Instituição:</strong> @Model.Instituicao1</p>
+                        <p><strong>Conclusão:</strong> @Model.Conclusao1</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Curso2))
+            {
+                <section>
+                    <div>
+                        <p><strong>Curso:</strong> @Model.Curso2</p>
+                        <p><strong>Instituição:</strong> @Model.Instituicao2</p>
+                        <p><strong>Conclusão:</strong> @Model.Conclusao2</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Curso3))
+            {
+                <section>
+                    <div>
+                        <p><strong>Curso:</strong> @Model.Curso3</p>
+                        <p><strong>Instituição:</strong> @Model.Instituicao3</p>
+                        <p><strong>Conclusão:</strong> @Model.Conclusao3</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Curso4))
+            {
+                <section>
+                    <div>
+                        <p><strong>Curso:</strong> @Model.Curso4</p>
+                        <p><strong>Instituição:</strong> @Model.Instituicao4</p>
+                        <p><strong>Conclusão:</strong> @Model.Conclusao4</p>
+                    </div>
+                </section>
+            }
+            <hr> <!-- linha divisória -->
+            @if (!string.IsNullOrEmpty(@Model.Curso5))
+            {
+                <section>
+                    <div>
+                        <p><strong>Curso:</strong> @Model.Curso5</p>
+                        <p><strong>Instituição:</strong> @Model.Instituicao5</p>
+                        <p><strong>Conclusão:</strong> @Model.Conclusao5</p>
+                    </div>
+                </section>
+            }
+
+            <!-- Idiomas -->
+
+            @if (!string.IsNullOrEmpty(@Model.Idiomas))
+            {
+
+                <section>
+                    <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket"></i></span>Idiomas</h2>
+                    <div>
+                        <p><strong>Idiomas:</strong> @Model.Idiomas</p>
+                    </div>
+                </section>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
