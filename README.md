@@ -6,18 +6,23 @@ This project was made using the **Creative** theme by [Start Bootstrap](https://
 
 ## Functionalities
 Header of the page.
+<br>
 ![The home page](/img/home.png)
-
+<br>
 Section about the website.
+<br>
 ![About the project](/img/about.png)
-
+<br>
 Section about the services offered and how to use.
+<br>
 ![How to use the website](/img/services.png)
-
+<br>
 List of resumes created by the user with "edit", "delete", "update" and "create new" buttons.
+<br>
 ![Resumes created](/img/resumes.png)
-
+<br>
 Footer of the home page about the developers of the project.
+<br>
 ![About the developers](/img/about_devs.png)
 
 ## Technologies used
