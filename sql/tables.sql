@@ -1,11 +1,3 @@
-CREATE DATABASE N2B1_Curriculo;
-
-use N2B1_Curriculo;
-
-CREATE DATABASE N2B1_Curriculo;
-
-use N2B1_Curriculo;
-
 CREATE TABLE Curriculos (
 	cpf VARCHAR(60) PRIMARY KEY NOT NULL,
 	nome VARCHAR(60),
@@ -42,10 +34,6 @@ CREATE TABLE Curriculos (
 	linkedin VARCHAR(100),
 	telefone VARCHAR(20)
 )
-
-DROP TABLE Curriculos;
-
-select * from curriculos;
 
 insert into Curriculos(
 	cpf, 
@@ -86,10 +74,6 @@ VALUES ('21579845231' , 'Euardo Rosalem', '01/01/1901', 'Estrada dos Alvarengas'
 
 INSERT INTO Curriculos VALUES
 ('25632179456', 'Haron', '03/09/2001', 'Alaska', 'haron.teste@gmail.com', 2000, 'Diretor', 'Ensino Médio', 'Não Tenho', 'Portanhol', 'Não tenho')
-
-DROP TABLE Curriculos;
-
-select * from curriculos;
 
 insert into Curriculos(cpf, nome, data_nascimento, endereco, email, pret_salarial, cargo_pretendido, formacao_acad, ex_profissional, idiomas, linkedin, telefone)
 values ('21579845231' , 'teste1', '12/12/2000', 'teste1', 'test1@gmail.com', 1222, 'teste1', 'nada', 'iha', 'aeiou', 'negativo','4654654')
