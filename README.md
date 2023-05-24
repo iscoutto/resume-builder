@@ -1,6 +1,11 @@
-# Resume builder - website using Asp Net MVC
+# Resume builder - website to create resumes
 
 Welcome to the "Resume Builder", a project that was carried out in the fifth semester of Computer Engineering to apply the knowledge acquired in the programming language classes.
+
+## Overview
+
+The objective of this project is to develop a resume in a practical and fast way. The user fills out a form and based on the information, the resume is created using a professional template.
+The system has the ability to find all user-created resumes with options to edit, delete, or format.
 
 ## Theme
 This project was made using the **Creative** theme by [Start Bootstrap](https://startbootstrap.com/themes).
