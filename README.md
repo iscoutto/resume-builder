@@ -28,7 +28,3 @@ This project was a collaborative effort, I would like to thank [Haron Terentin](
 ## Contact
 
 For more information about the project or any inquiries, feel free to contact me or any of the mentioned contributors above. 
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
